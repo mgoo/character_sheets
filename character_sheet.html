@@ -99,6 +99,60 @@
                 <tr>Effect</tr>
                 </thead>
                 <tbody>
+                <tr></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="beneficialMutationPanel" aria-labelledby="beneficialMutationPanelLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="beneficialMutationPanelLabel">Beneficial Mutations</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <table class="table table-hover" id="beneficialMutationTable">
+                <thead>
+                <tr>Roll</tr>
+                <tr>Effect</tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="harmfulMutationPanel" aria-labelledby="harmfulMutationPanelLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="harmfulMutationPanelLabel">Harmful Mutations</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <table class="table table-hover" id="harmfulMutationTable">
+                <thead>
+                <tr>Roll</tr>
+                <tr>Effect</tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="powerfulMutationPanel" aria-labelledby="powerfulMutationPanelLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="powerfulMutationPanelLabel">Powerful Mutations</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <table class="table table-hover" id="powerfulMutationTable">
+                <thead>
+                <tr>Roll</tr>
+                <tr>Effect</tr>
+                </thead>
+                <tbody>
                     <tr></tr>
                 </tbody>
             </table>
@@ -196,6 +250,19 @@
         let powerful_mutation_co_table = $('#powerfulMutationCoTable tbody');
         powerful_mutations_co.forEach(function (mutation) {
             powerful_mutation_co_table.append(mutation_table_row_template(mutation));
+        });
+
+        let beneficial_mutation_table = $('#beneficialMutationTable tbody');
+        beneficial_mutations.forEach(function (mutation) {
+            beneficial_mutation_table.append(mutation_table_row_template(mutation));
+        });
+        let harmful_mutation_table = $('#harmfulMutationTable tbody');
+        harmful_mutations.forEach(function (mutation) {
+            harmful_mutation_table.append(mutation_table_row_template(mutation));
+        });
+        let powerful_mutation_table = $('#powerfulMutationTable tbody');
+        powerful_mutations.forEach(function (mutation) {
+            powerful_mutation_table.append(mutation_table_row_template(mutation));
         });
 
         $('.ability').each(function () {
