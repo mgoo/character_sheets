@@ -1,0 +1,209 @@
+<!doctype html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar">
+    <h1 class="navbar-brand">Marcel</h1>
+</nav>
+<a class="btn btn-success" data-bs-toggle="offcanvas" href="#voidStonePanel" role="button" aria-controls="voidStonePanel" style="position: absolute;left: 0;top: 100px;">
+    <img src="img/void_stone.png" alt="void_stone" width="20px" height="20px">
+</a>
+<div class="container" style="padding: 0">
+
+    <h2>Abilities</h2>
+    <div class="d-flex flex-wrap justify-content-center" style="width: 100%" id="card-container">
+
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="abilityPanel" aria-labelledby="abilityPanelLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="abilityPanelLabel"></h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" id="abilityPanelBody">
+
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="voidStonePanel" aria-labelledby="voidStonePanelLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="voidStonePanelLabel">Void Stone</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <p>Can activate Midnight stone with diff 4</p>
+                <p>Can choose result with a diff 8 task on failure get a random effect</p>
+            </div>
+            <table class="table table-hover" id="void-effect-table">
+                <thead>
+                    <tr>Roll</tr>
+                    <tr>Effect</tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="beneficialMutationCoPanel" aria-labelledby="beneficialMutationCoPanelLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="beneficialMutationCoPanelLabel">Beneficial Mutations (Character Options)</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <table class="table table-hover" id="beneficialMutationCoTable">
+                <thead>
+                    <tr>Roll</tr>
+                    <tr>Effect</tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="harmfulMutationCoPanel" aria-labelledby="harmfulMutationCoPanelLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="harmfulMutationCoPanelLabel">Harmful Mutations (Character Options)</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <table class="table table-hover" id="harmfulMutationCoTable">
+                <thead>
+                <tr>Roll</tr>
+                <tr>Effect</tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="powerfulMutationCoPanel" aria-labelledby="powerfulMutationCoPanelLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="powerfulMutationCoPanelLabel">Powerful Mutations (Character Options)</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <table class="table table-hover" id="powerfulMutationCoTable">
+                <thead>
+                <tr>Roll</tr>
+                <tr>Effect</tr>
+                </thead>
+                <tbody>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" integrity="sha256-sw0iNNXmOJbQhYFuC9OF2kOlD5KQKe1y5lfBn4C9Sjg=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="js/constants.js"></script>
+
+<script>
+    function card_template(ability, idx) {
+        let cost = '';
+        if (Array.isArray(ability['cost'])) {
+            cost = ability['cost'].map(cost => cost_str(cost)).reduce((acc, val) => `${acc} or ${val}`)
+        } else {
+            cost = cost_str(ability['cost'])
+        }
+        return `<div class="card ability" style="width: 18rem;" ability="${idx}" data-bs-toggle="offcanvas" href="#abilityPanel" role="button" aria-controls="abilityPanel">
+            <div class="card-body">
+                <h5 class="card-title" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis">${ability['name']}</h5>
+                <div class="card-text">
+                    <div><span>Cost: </span>${cost}</div>
+                    <div><span>Range: </span>${ability['range']}</div>
+                    <div><span>Duration: </span>${ability['duration']}</div>
+                </p>
+            </div>
+        </div>`
+    }
+    function cost_str(cost) {
+        let cost_str = '';
+        if (cost['mgt'] > 0) {
+            cost_str = cost_str.concat(`${cost['mgt']} Might `)
+        }
+        if (cost['spd'] > 0) {
+            cost_str = cost_str.concat(`${cost['spd']} Spd `)
+        }
+        if (cost['int'] > 0) {
+            cost_str = cost_str.concat(`${cost['int']} Int `)
+        }
+        return cost_str
+    }
+    function open_ability(idx) {
+        let ability = abilities[idx];
+        let cost = '';
+        if (Array.isArray(ability['cost'])) {
+            cost = ability['cost'].map(cost => cost_str(cost)).reduce((acc, val) => `${acc} or ${val}`)
+        } else {
+            cost = cost_str(ability['cost'])
+        }
+        $('#abilityPanelLabel').html(ability['name'])
+        $('#abilityPanelBody').html(`
+            <div>${ability['desc']}</div>
+            <hr>
+            <div><span>Cost: </span>${cost}</div>
+            <div><span>Range: </span>${ability['range']}</div>
+            <div><span>Duration: </span>${ability['duration']}</div>
+            <div><span>Source: </span>${ability['source']}</div>
+        `)
+    }
+    function void_table_row_template(effect) {
+        let weight = ((effect['weight'][0] === effect['weight'][1]) ? String(effect['weight'][0]): `${effect['weight'][0]} - ${effect['weight'][1]}`);
+        return `<tr><td>${weight}</td><td>${effect['desc']}</td></tr>`
+    }
+    function mutation_table_row_template(mutation) {
+        let weight = ((mutation['weight'][0] === mutation['weight'][1]) ? String(mutation['weight'][0]): `${mutation['weight'][0]} - ${mutation['weight'][1]}`);
+        let id = mutation['name'].split(' ').join('_');
+        return `
+            <tr data-bs-toggle="collapse" data-bs-target="#mutation-${id}"><td>${weight}</td><td>${mutation['name']}</td></tr>
+            <tr id="mutation-${id}" class="collapse"><td colspan="2">${mutation['desc']}</td></tr>`
+    }
+
+    $(document).ready(function () {
+        let card_container = $('#card-container');
+        abilities.forEach(function (ability, idx) {
+            card_container.append(card_template(ability, idx));
+        });
+        let void_effect_table = $('#void-effect-table tbody');
+        void_stone_table.forEach(function (effect) {
+            void_effect_table.append(void_table_row_template(effect));
+        });
+
+        let beneficial_mutation_co_table = $('#beneficialMutationCoTable tbody');
+        beneficial_mutations_co.forEach(function (mutation) {
+            beneficial_mutation_co_table.append(mutation_table_row_template(mutation));
+        });
+        let harmful_mutation_co_table = $('#harmfulMutationCoTable tbody');
+        harmful_mutations_co.forEach(function (mutation) {
+            harmful_mutation_co_table.append(mutation_table_row_template(mutation));
+        });
+        let powerful_mutation_co_table = $('#powerfulMutationCoTable tbody');
+        powerful_mutations_co.forEach(function (mutation) {
+            powerful_mutation_co_table.append(mutation_table_row_template(mutation));
+        });
+
+        $('.ability').each(function () {
+            let card = $(this);
+            $(this).on('click', function () {
+                open_ability(parseInt(card.attr('ability')));
+            });
+        })
+    });
+</script>
+</body>
