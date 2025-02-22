@@ -1190,10 +1190,3 @@ more than 1 point per round. Enabler.`,
     },
 
 ]
-
-
-// {
-//     name: '',
-//     desc: ``,
-//     weight: [0, 0]
-// }
