@@ -89,7 +89,7 @@ const abilities = {
     },
     'Bigger': {
         name: 'Bigger',
-        desc: ' When you use Enlarge, you can choose to grow up to 12 feet (4 m) in height, and you add 3 more temporary points to your Might Pool',
+        desc: 'When you use Enlarge, you can choose to grow up to 12 feet (4 m) in height, and you add 3 more temporary points to your Might Pool',
         flags: {
             type: 'Enabler',
             classification: 'Defence'
@@ -98,5 +98,49 @@ const abilities = {
         duration: 'NA',
         range: 'NA',
         source: 'Focus: Grows to Towering Heights'
+    },
+    'Draw the Attack': {
+        name: 'Draw the Attack',
+        desc: 'Attack: When an NPC attacks a ' +
+            'character, another PC can prominently present ' +
+            'themselves, shout taunts, and move to try to ' +
+            'get the foe to attack them instead. In most ' +
+            'cases, this action succeeds without a roll—the ' +
+            'opponent attacks the prominent PC instead of ' +
+            'their companions. In other cases, such as with ' +
+            'intelligent or determined foes, the prominent ' +
+            'character must succeed at an Intellect action ' +
+            'to draw the attack. If that Intellect action is ' +
+            'successful, the foe attacks the prominent ' +
+            'character, whose defenses are hindered by two ' +
+            'steps. Two characters attempting to draw an ' +
+            'attack at the same time cancel each other out.',
+        flags: {
+            type: 'Action',
+            classification: 'Defence'
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'NA',
+        source: 'Base Action'
+    },
+    'Take the Attack': {
+        name: 'Take the Attack',
+        desc: 'A character can use their action ' +
+            'to throw themselves in front of a foe’s successful ' +
+            'attack to save a nearby comrade. The attack ' +
+            'automatically succeeds against the sacrificial ' +
+            'character, and it deals 1 additional point of ' +
+            'damage. A character cannot willingly take more ' +
+            'than one attack each round in this way.',
+        flags: {
+            type: 'Action',
+            classification: 'Defence'
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'NA',
+        source: 'Base Action'
     }
+
 }
