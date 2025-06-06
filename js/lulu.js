@@ -75,4 +75,28 @@ const abilities = {
         range: 'Self',
         source: 'Focus: Grows to Towering Heights'
     },
+    'Wind Armor': {
+        name: 'Wind Armor',
+        desc: 'When you wish it, a cyclone of wind surrounds your body for ten minutes, giving you +1 to Armor and an additional +2 to Armor against physical projectile weapons specifically. While the cyclone is active, you feel no discomfort from the wind, and you can interact with other creatures and objects normally because the wind flow automatically diverts to enable such interaction.',
+        flags: {
+            type: 'Enabler',
+            classification: 'Defence'
+        },
+        cost: {mgt: 0, spd: 0, int: 1},
+        duration: '10 Min',
+        range: 'Self',
+        source: 'Flavor: Protection'
+    },
+    'Bigger': {
+        name: 'Bigger',
+        desc: ' When you use Enlarge, you can choose to grow up to 12 feet (4 m) in height, and you add 3 more temporary points to your Might Pool',
+        flags: {
+            type: 'Enabler',
+            classification: 'Defence'
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'NA',
+        source: 'Focus: Grows to Towering Heights'
+    }
 }
