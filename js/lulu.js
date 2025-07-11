@@ -141,6 +141,47 @@ const abilities = {
         duration: 'NA',
         range: 'NA',
         source: 'Base Action'
+    },
+    'Light Sensitive': {
+        name: 'Light Sensitive',
+        desc: 'You have an issue with bright' +
+            'light, especially sunlight. When exposed to' +
+            'sunlight or strong UV light, the difficulty of all' +
+            'tasks is increased by one step. In a recursion' +
+            'that operates under the law of Magic, you also' +
+            'descend one step on the damage track and take' +
+            '5 points of damage per round (this damage' +
+            'ignores Armor, unless that Armor completely' +
+            'covers you).',
+        flags: {
+            type: 'Enabler',
+            classification: 'Weakness'
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'NA',
+        source: 'Vampire'
+    },
+    'Blood Driven': {
+        name: 'Blood Driven',
+        desc: 'You’re always hungry for' +
+                'blood, especially when you force yourself' +
+                'not to act on that yearning. Whenever you' +
+                'descend one step on the damage track, you' +
+                'must succeed on a difficulty 2 Intellect defense' +
+                'roll or you are compelled to try to bite the' +
+                'closest living creature and drink its blood. You' +
+                'continue attacking until you move one step' +
+                'up the damage track or until you succeed on a'  +
+                'subsequent difficulty 3 Intellect defense roll.',
+        flags: {
+            type: 'Enabler',
+            classification: 'Weakness'
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'NA',
+        source: 'Vampire'
     }
 
 }
