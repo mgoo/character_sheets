@@ -4,7 +4,7 @@ const abilities = {
         desc: 'You leap through the air and land some distance away. You can jump up, down, or across to anywhere you choose within long range if you have a clear and unobstructed path to that location. You land safely.',
         flags: {
             type: 'Action',
-            classification: 'Movement'
+            classification: ['Movement']
         },
         cost: {mgt: 0, spd: 0, int: 2},
         duration: 'NA',
@@ -15,8 +15,8 @@ const abilities = {
         name: 'Resonance Field',
         desc: 'Faint lines in a color you choose form a tracery over your entire body and emit faint light.  Whenever a creature within immediate range makes an attack against you, the pattern energizes to block the attack. You can make an Intellect defense roll in place of the defense roll you would normally make. If you do so and you get a minor effect, the creature attacking you takes 1 point of damage. If you get a major effect, the creature attacking you takes 4 points of damage',
         flags: {
-            type: 'Action to Initiate',
-            classification: 'Defence'
+            type: 'Enabler',
+            classification: ['Defence']
         },
         cost: {mgt: 0, spd: 0, int: 1},
         duration: '1 min',
@@ -28,7 +28,7 @@ const abilities = {
         desc: 'You have a shield of energy around you at all times that helps deflect attacks. You gain +1 to Armor.',
         flags: {
             type: 'Enabler',
-            classification: 'Defence'
+            classification: ['Defence']
         },
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'Infinity',
@@ -40,7 +40,7 @@ const abilities = {
         desc: 'You are trained in Intellect defense tasks and have +2 Armor against damage that selectively targets your Intellect Pool (which normally ignores Armor).',
         flags: {
             type: 'Enabler',
-            classification: 'Defence'
+            classification: ['Defence']
         },
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'Infinity',
@@ -55,8 +55,8 @@ const abilities = {
               'When the effects of Enlarge end, your Armor and Might Edge return to normal, and you subtract a number of points from your Might Pool equal to the number you gained (if this brings the Pool to 0, subtract the overflow first from your Speed Pool and then, if necessary, from your Intellect Pool). ' +
               'Each additional time you use Enlarge before your next ten-hour recovery roll, you must apply an additional level of Effort. Thus, the second time you use Enlarge, you must apply one level of Effort; the third time you use Enlarge, two levels of Effort; and so on.',
         flags: {
-            type: 'Action to initiate',
-            classification: 'Grow'
+            type: 'Action',
+            classification: ['Grow']
         },
         cost: {mgt: 1, spd: 0, int: 0},
         duration: '1 Min',
@@ -68,7 +68,7 @@ const abilities = {
         desc: 'Your increased size intimidates most people. While you enjoy the effects of Enlarge, all intimidation tasks you attempt are eased.',
         flags: {
             type: 'Enabler',
-            classification: 'Grow'
+            classification: ['Grow']
         },
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'Infinity',
@@ -80,7 +80,7 @@ const abilities = {
         desc: 'When you wish it, a cyclone of wind surrounds your body for ten minutes, giving you +1 to Armor and an additional +2 to Armor against physical projectile weapons specifically. While the cyclone is active, you feel no discomfort from the wind, and you can interact with other creatures and objects normally because the wind flow automatically diverts to enable such interaction.',
         flags: {
             type: 'Enabler',
-            classification: 'Defence'
+            classification: ['Defence']
         },
         cost: {mgt: 0, spd: 0, int: 1},
         duration: '10 Min',
@@ -92,7 +92,7 @@ const abilities = {
         desc: 'When you use Enlarge, you can choose to grow up to 12 feet (4 m) in height, and you add 3 more temporary points to your Might Pool',
         flags: {
             type: 'Enabler',
-            classification: 'Defence'
+            classification: ['Grow']
         },
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'NA',
@@ -112,12 +112,12 @@ const abilities = {
             'character must succeed at an Intellect action ' +
             'to draw the attack. If that Intellect action is ' +
             'successful, the foe attacks the prominent ' +
-            'character, whose defenses are hindered by two ' +
+            'character, whose defenses are hindered by one ' +
             'steps. Two characters attempting to draw an ' +
             'attack at the same time cancel each other out.',
         flags: {
             type: 'Action',
-            classification: 'Defence'
+            classification: ['Defence']
         },
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'NA',
@@ -135,27 +135,57 @@ const abilities = {
             'than one attack each round in this way.',
         flags: {
             type: 'Action',
-            classification: 'Defence'
+            classification: ['Defence']
         },
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'NA',
         range: 'NA',
         source: 'Base Action'
     },
+    'Punch': {
+        name: 'Punch',
+        desc: 'Large weapon when enlarged. 8dmg (6+2)',
+        flags: {
+            type: 'Action',
+            classification: ['Attack', 'Grow']
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'Immediate',
+        source: 'Focus: Grows to Towering Heights'
+    },
+    'Bite Attack': {
+        name: 'Bite Attack',
+        desc: 'You are practiced in making bite ' +
+            'attacks that deal damage as a medium weapon 6dmg (4+2). ' +
+            'In a recursion that operates under the law of ' +
+            'Magic, you regain Might points equal to half ' +
+            'the amount of damage you inflict on a foe (after ' +
+            'Armor is accounted for; round down for the ' +
+            'total).',
+        flags: {
+            type: 'Action',
+            classification: ['Attack']
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'Immediate',
+        source: 'Vampire'
+    },
     'Light Sensitive': {
         name: 'Light Sensitive',
-        desc: 'You have an issue with bright' +
-            'light, especially sunlight. When exposed to' +
-            'sunlight or strong UV light, the difficulty of all' +
-            'tasks is increased by one step. In a recursion' +
-            'that operates under the law of Magic, you also' +
-            'descend one step on the damage track and take' +
-            '5 points of damage per round (this damage' +
-            'ignores Armor, unless that Armor completely' +
+        desc: 'You have an issue with bright ' +
+            'light, especially sunlight. When exposed to ' +
+            'sunlight or strong UV light, the difficulty of all ' +
+            'tasks is increased by one step. In a recursion ' +
+            'that operates under the law of Magic, you also ' +
+            'descend one step on the damage track and take ' +
+            '5 points of damage per round (this damage ' +
+            'ignores Armor, unless that Armor completely ' +
             'covers you).',
         flags: {
             type: 'Enabler',
-            classification: 'Weakness'
+            classification: ['Weakness']
         },
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'NA',
@@ -164,24 +194,77 @@ const abilities = {
     },
     'Blood Driven': {
         name: 'Blood Driven',
-        desc: 'You’re always hungry for' +
-                'blood, especially when you force yourself' +
-                'not to act on that yearning. Whenever you' +
-                'descend one step on the damage track, you' +
-                'must succeed on a difficulty 2 Intellect defense' +
-                'roll or you are compelled to try to bite the' +
-                'closest living creature and drink its blood. You' +
-                'continue attacking until you move one step' +
-                'up the damage track or until you succeed on a'  +
-                'subsequent difficulty 3 Intellect defense roll.',
+        desc: 'You’re always hungry for ' +
+            'blood, especially when you force yourself ' +
+            'not to act on that yearning. Whenever you ' +
+            'descend one step on the damage track, you ' +
+            'must succeed on a difficulty 2 Intellect defense ' +
+            'roll or you are compelled to try to bite the ' +
+            'closest living creature and drink its blood. You ' +
+            'continue attacking until you move one step ' +
+            'up the damage track or until you succeed on a '  +
+            'subsequent difficulty 3 Intellect defense roll.',
         flags: {
             type: 'Enabler',
-            classification: 'Weakness'
+            classification: ['Weakness']
         },
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'NA',
         range: 'NA',
         source: 'Vampire'
+    },
+    'Bat Form': {
+        name: 'Bat Form',
+        desc: 'Turn into bat can fly :D',
+        flags: {
+            type: 'Action',
+            classification: ['Movement']
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'NA',
+        source: 'Vampire'
+    },
+    'Huge': {
+        name: 'Huge',
+        desc: 'When you use Enlarge, you can choose to grow up to 16 feet (5 m) in height. ' +
+            'When you do, you add +1 to Armor (a total of +2 to Armor) and deal 2 additional ' +
+            'points of damage with melee attacks',
+        flags: {
+            type: 'Enabler',
+            classification: ['Grow']
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'NA',
+        source: 'Focus: Grows to Towering Heights'
+    },
+    'Stasis': {
+        name: 'Stasis',
+        desc: 'You surround a foe of your size or smaller with scintillating energy, ' +
+            'keeping it from moving or acting for one minute, as if frozen solid.' +
+            ' You must be able to see the target, and it must be within short range.' +
+            ' While in stasis, the target is impervious to harm, cannot be moved,' +
+            ' and is immune to all effects',
+        flags: {
+            type: 'Action',
+            classification: ['Attack']
+        },
+        cost: {mgt: 0, spd: 0, int: 3},
+        duration: '1min',
+        range: 'short range',
+        source: 'Type: Adept'
+    },
+    'Fists of Fury': {
+        name: 'Fists of Fury',
+        desc: 'You inflict 2 additional points of damage with unarmed attacks',
+        flags: {
+            type: 'Enabler',
+            classification: ['Attack']
+        },
+        cost: {mgt: 0, spd: 0, int: 3},
+        duration: 'NA',
+        range: 'NA',
+        source: 'Flavor: Chimera'
     }
-
 }
