@@ -32,6 +32,9 @@
       <li class="nav-item">
         <button class="nav-link" id="base-stat-tab"  data-bs-toggle="tab" data-bs-target="#base" type="button" role="tab" aria-controls="base" aria-selected="false">Base</button>
       </li>
+      <li class="nav-item">
+        <button class="nav-link" id="equ-tab" data-bs-toggle="tab" data-bs-target="#equ" type="button" role="tab" aria-controls="equ" aria-selected="false">Equipment</button>
+      </li>
     </ul>
 
     <div class="tab-content" id="swipe-root">
@@ -57,16 +60,66 @@
       </div>
 
       <div class="tab-pane fade" style="width: 100%" id="enlarge" role="tabpanel" aria-labelledby="enlarge-tab">
-        <ul class="list-group">
-          <li class="list-group-item">4m Height</li>
-          <li class="list-group-item list-group-item-success">+7 Temp Might</li>
-          <li class="list-group-item list-group-item-success">+2 Might Edge</li>
-          <li class="list-group-item list-group-item-success">+2 Armor</li>
-          <li class="list-group-item list-group-item-success">+2 Dmg Melee</li>
-          <li class="list-group-item list-group-item-success">Practiced in fists as heavy weapons</li>
-          <li class="list-group-item list-group-item-success">Intimidation eased</li>
-          <li class="list-group-item list-group-item-danger">Speed Def Hindered</li>
-        </ul>
+        <div class="accordion" id="enlarge-accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="head-one">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#item-one" aria-expanded="true" aria-controls="item-one">
+                5m Height
+              </button>
+            </h2>
+            <div id="item-one" class="accordion-collapse collapse show" aria-labelledby="head-one" data-bs-parent="#enlarge-accordion">
+              <div class="accordion-body">
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-success">+7 Temp Might</li>
+                  <li class="list-group-item list-group-item-success">+2 Might Edge</li>
+                  <li class="list-group-item list-group-item-success">+2 Armor</li>
+                  <li class="list-group-item list-group-item-success">+2 Dmg Melee</li>
+                  <li class="list-group-item list-group-item-success">Practiced in fists as heavy weapons</li>
+                  <li class="list-group-item list-group-item-success">Intimidation eased</li>
+                  <li class="list-group-item list-group-item-danger">Speed Def Hindered</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="head-two">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#item-two" aria-expanded="false" aria-controls="item-two">
+                4m Height
+              </button>
+            </h2>
+            <div id="item-two" class="accordion-collapse collapse" aria-labelledby="head-two" data-bs-parent="#enlarge-accordion">
+              <div class="accordion-body">
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-success">+7 Temp Might</li>
+                  <li class="list-group-item list-group-item-success">+2 Might Edge</li>
+                  <li class="list-group-item list-group-item-success">+1 Armor</li>
+                  <li class="list-group-item list-group-item-success">Practiced in fists as heavy weapons</li>
+                  <li class="list-group-item list-group-item-success">Intimidation eased</li>
+                  <li class="list-group-item list-group-item-danger">Speed Def Hindered</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="head-three">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#item-three" aria-expanded="false" aria-controls="item-three">
+                3m Height
+              </button>
+            </h2>
+            <div id="item-three" class="accordion-collapse collapse" aria-labelledby="head-three" data-bs-parent="#enlarge-accordion">
+              <div class="accordion-body">
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-success">+4 Temp Might</li>
+                  <li class="list-group-item list-group-item-success">+2 Might Edge</li>
+                  <li class="list-group-item list-group-item-success">+1 Armor</li>
+                  <li class="list-group-item list-group-item-success">Practiced in fists as heavy weapons</li>
+                  <li class="list-group-item list-group-item-success">Intimidation eased</li>
+                  <li class="list-group-item list-group-item-danger">Speed Def Hindered</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="tab-pane fade" style="width: 100%" id="vamp" role="tabpanel" aria-labelledby="vamp-tab">
@@ -98,8 +151,12 @@
         </ul>
       </div>
 
+      <div class="tab-pane fade" style="width: 100%" id="equ" role="tabpanel" aria-labelledby="equ-tab">
+        <div class="d-flex flex-wrap justify-content-center" style="width: 100%;margin-top: 20px" id="equ-cards">
+          <!-- This gets filled in later -->
+        </div>
+      </div>
     </div>
-
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="abilityPanel" aria-labelledby="abilityPanelLabel">
       <div class="offcanvas-header">
@@ -120,6 +177,40 @@
   <script src="js/lulu.js?version=1"></script>
 
   <script>
+    function equ_template(name, equ) {
+      let badge = equ['depleted'] === true ? '<span class="badge bg-danger">Dep</span>' : '';
+      return `<div class="card equ" style="width: 18rem;" equ="${name}" data-bs-toggle="offcanvas" href="#abilityPanel" role="button" aria-controls="abilityPanel">
+              <div class="card-body">
+                  <h5 class="card-title" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis">${equ['name']} ${badge}</h5>
+                  <div class="card-text">
+                      <div><span>Lv: </span>${equ['lv']}</div>
+                      <div><span>Depletion: </span>${equ['depletion']}</div>
+                  </p>
+              </div>
+          </div>`
+    }
+    function generate_equ_cards(container) {
+      container.html('')
+      for (const [name, equ] of Object.entries(equs)) {
+        let card = $(equ_template(name, equ))
+        container.append(card);
+        card.on('click', function () {
+          open_equ(card.attr('equ'));
+        });
+      }
+    }
+    function open_equ(name) {
+      let equ = equs[name];
+      $('#abilityPanelLabel').html(equ['name'])
+      $('#abilityPanelBody').html(`
+              <div>${equ['effect']}</div>
+              <hr>
+              <div><span>Lv: </span>${equ['lv']}</div>
+              <div><span>Depletion: </span>${equ['depletion']}</div>
+              <div><span>Depleted: </span>${equ['depleted']}</div>
+          `)
+    }
+
     function card_template(name, ability) {
       let cost = '';
       if (Array.isArray(ability['cost'])) {
@@ -200,6 +291,7 @@
     $(document).ready(function () {
       generate_cards($('#abilities-cards'), (ability) => true);
       generate_cards($('#vamp-cards'), (ability) => (ability['source'] === 'Vampire'))
+      generate_equ_cards($('#equ-cards'))
 
       $('.filter').each(function() {
         $(this).on('click', function(event) {

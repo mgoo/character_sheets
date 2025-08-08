@@ -262,9 +262,65 @@ const abilities = {
             type: 'Enabler',
             classification: ['Attack']
         },
-        cost: {mgt: 0, spd: 0, int: 3},
+        cost: {mgt: 0, spd: 0, int: 0},
         duration: 'NA',
         range: 'NA',
         source: 'Flavor: Chimera'
+    },
+    'Force Field Barrier': {
+        name: 'Force Field Barrier',
+        desc: 'You create an opaque, stationary barrier of solid energy (a force field) within immediate range. '+
+            'The barrier is 10 feet by 10 feet (3 m by 3 m) and of negligible thickness. It is a level 2 barrier '+
+            'and lasts for ten minutes. It can be placed anywhere it fits, whether against a solid object (including '+
+            'the ground) or floating in the air. Each level of Effort you apply strengthens the barrier by one level. '+
+            'For example, applying two levels of Effort creates a level 4 barrier.',
+        flags: {
+            type: 'Action',
+            classification: ['Defence']
+        },
+        cost: {mgt: 0, spd: 0, int: 3},
+        duration: '10min',
+        range: 'immediate range',
+        source: 'Type: Adept'
+    }
+}
+const equs = {
+    'Wand of Major Illusion': {
+        name: 'Wand of Major Illusion',
+        lv: 'idk',
+        effect: 'Does Major Illusion',
+        depletion: '0 Charges',
+        depleted: true
+    },
+    'Wand of Onslaught': {
+        name: 'Wand of Onslaught',
+        lv: 'idk',
+        effect: 'Does Onslaught',
+        depletion: '0 Charges',
+        depleted: true
+    },
+    'Wand of Fireblood': {
+        name: 'Wand of Fireblood',
+        lv: 'idk',
+        effect: '15 Spd dmg and hinders targets movement for 3 rounds at long range',
+        depletion: '0 Charges',
+        depleted: true
+    },
+    'Demon armor': {
+        name: 'Demon Armor',
+        lv: 'NA',
+        effect: 'Stronk armor. No penalty. cannot take off',
+        depletion: 'NA',
+        depleted: false
+    },
+    'Angelic Ward': {
+        name: 'Angelic Ward',
+        lv: 7,
+        effect: 'Once activated, the figurine\'s spirit emerges and becomes semisolid as a glowing, '+
+            'human-sized winged angel. It follows within 3 feet (1 m) of the figurine owner. Anything '+
+            'within long range that attacks the owner is attacked by the angelic ward, which sends out '+
+            'a bolt of flesh-rotting energy, doing damage equal to the artifact\'s level. Once activated, it functions for a day.',
+        depletion: '1 in 1d10',
+        depleted: false
     }
 }
