@@ -282,6 +282,52 @@ const abilities = {
         duration: '10min',
         range: 'immediate range',
         source: 'Type: Adept'
+    },
+    'Grab': {
+        name: 'Grab',
+        desc: 'While you are using the Enlarge ability, you can attack by attempting to wrap your massive hands around a' +
+            'target the size of a normal human or smaller. While you maintain your hold as your action, you keep the target ' +
+            'from moving or taking physical actions (other than attempts to escape). The target\'s escape attempt is hindered ' +
+            'by two steps due to your size. If you wish, you can automatically inflict 3 points of damage each round on the ' +
+            'target while you hold it, but you can also keep it protected (by taking all attacks otherwise meant for the target).',
+        flags: {
+            type: 'Action',
+            classification: ['Attack', 'Defence', 'Grow']
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'Immediate',
+        source: 'Focus: Grows to Towering Heights'
+    },
+    'Regeneration': {
+        name: 'Regeneration',
+        desc: 'You restore points to a target\'s Might or Speed Pool in one of two ways: either the chosen Pool regains ' +
+            'up to 6 points, or it is restored to a total value of 12. You make this decision when you initiate this ability. ' +
+            'Points are regenerated at a rate of 1 point each round. You must remain within immediate range of the target ' +
+            'the whole time, either touching them or conversing with them. In no case can this raise a Pool higher than its maximum.',
+        flags: {
+            type: 'Action',
+            classification: ['Defence']
+        },
+        cost: {mgt: 0, spd: 0, int: 6},
+        duration: 'inf??',
+        range: 'immediate range',
+        source: 'Type: Adept'
+    },
+    'Rapid Recovery': {
+        name: 'Rapid Recovery',
+        desc: 'You can make most recovery rolls faster than normal. You can make your one-action recovery roll as part of ' +
+            'another action or when it isn\'t your turn, your ten-minute recovery roll takes you only one action, and your ' +
+            'one-hour recovery roll takes you only ten minutes (your ten-hour rest is unchanged). If you make a recovery ' +
+            'roll when it isn\'t your turn, until the end of your next turn all of your tasks are hindered',
+        flags: {
+            type: 'Enabler',
+            classification: ['Defence']
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'NA',
+        source: 'Extra: God Powers'
     }
 }
 const equs = {
@@ -321,6 +367,13 @@ const equs = {
             'within long range that attacks the owner is attacked by the angelic ward, which sends out '+
             'a bolt of flesh-rotting energy, doing damage equal to the artifact\'s level. Once activated, it functions for a day.',
         depletion: '1 in 1d10',
+        depleted: false
+    },
+    'Belt Thing': {
+        name: 'Belt Thing',
+        lv: 5,
+        effect: '+2 Armor on one attack',
+        depletion: '1 Charge (1 in 1d10)',
         depleted: false
     }
 }
