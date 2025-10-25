@@ -311,7 +311,7 @@ const abilities = {
         },
         cost: {mgt: 0, spd: 0, int: 6},
         duration: 'inf??',
-        range: 'immediate range',
+        range: 'Immediate range',
         source: 'Type: Adept'
     },
     'Rapid Recovery': {
@@ -327,6 +327,21 @@ const abilities = {
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'NA',
         range: 'NA',
+        source: 'Extra: God Powers'
+    },
+    'Counter Danger': {
+        name: 'Counter Danger',
+        desc: 'You negate a source of potential danger related to one creature or object within immediate distance for '+
+            'one minute (instead of one round, as with Foil Danger). This could be a weapon or device held by someone, '+
+            'a creature\'s natural ability, or a trap triggered by a pressure plate. You can also try to counter an ' +
+            'action (like moving or making a conventional mundane attack with a weapon, a claw, etc.)',
+        flags: {
+            type: 'Action',
+            classification: ['Defence']
+        },
+        cost: {mgt: 0, spd: 0, int: 4},
+        duration: '1min',
+        range: 'Immediate Range',
         source: 'Extra: God Powers'
     }
 }
