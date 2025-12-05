@@ -9,7 +9,7 @@ const abilities = {
         cost: {mgt: 0, spd: 0, int: 2},
         duration: 'NA',
         range: 'Long Distance',
-        source: 'Type: Adept'
+        source: 'Type: Adept (T1)'
     },
     'Resonance Field': {
         name: 'Resonance Field',
@@ -21,7 +21,7 @@ const abilities = {
         cost: {mgt: 0, spd: 0, int: 1},
         duration: '1 min',
         range: 'Self',
-        source: 'Type: Adept'
+        source: 'Type: Adept (T1)'
     },
     'Ward': {
         name: 'Ward',
@@ -33,7 +33,7 @@ const abilities = {
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'Infinity',
         range: 'Self',
-        source: 'Type: Adept'
+        source: 'Type: Adept (T1)'
     },
     'Closed Mind': {
         name: 'Closed Mind',
@@ -45,7 +45,7 @@ const abilities = {
         cost: {mgt: 0, spd: 0, int: 0},
         duration: 'Infinity',
         range: 'Self',
-        source: 'Flavor: Protection'
+        source: 'Flavor: Protection (T1)'
     },
     'Enlarge': {
         name: 'Enlarge',
@@ -85,7 +85,7 @@ const abilities = {
         cost: {mgt: 0, spd: 0, int: 1},
         duration: '10 Min',
         range: 'Self',
-        source: 'Flavor: Protection'
+        source: 'Flavor: Protection (T1)'
     },
     'Bigger': {
         name: 'Bigger',
@@ -253,7 +253,7 @@ const abilities = {
         cost: {mgt: 0, spd: 0, int: 3},
         duration: '1min',
         range: 'short range',
-        source: 'Type: Adept'
+        source: 'Type: Adept (T2)'
     },
     'Fists of Fury': {
         name: 'Fists of Fury',
@@ -281,7 +281,7 @@ const abilities = {
         cost: {mgt: 0, spd: 0, int: 3},
         duration: '10min',
         range: 'immediate range',
-        source: 'Type: Adept'
+        source: 'Type: Adept (T3)'
     },
     'Grab': {
         name: 'Grab',
@@ -312,7 +312,7 @@ const abilities = {
         cost: {mgt: 0, spd: 0, int: 6},
         duration: 'inf??',
         range: 'Immediate range',
-        source: 'Type: Adept'
+        source: 'Type: Adept (T4)'
     },
     'Rapid Recovery': {
         name: 'Rapid Recovery',
@@ -342,7 +342,48 @@ const abilities = {
         cost: {mgt: 0, spd: 0, int: 4},
         duration: '1min',
         range: 'Immediate Range',
-        source: 'Extra: God Powers'
+        source: 'Type: Adept (T4)'
+    },
+    'Defensive Field': {
+        name: 'Defensive Field',
+        desc: 'Thanks to subdermal implants, a permanent spell, alien modifications, or something similar, you now have'+
+            ' a force field that radiates 1 inch (2.5 cm) from your body and provides you with +2 Armor.',
+        flags: {
+            type: 'Enabler',
+            classification: ['Defence']
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'Inf',
+        range: 'NA',
+        source: 'Flavor: Protection (T5)'
+    },
+    'Elemental Protection': {
+        name: 'Elemental Protection',
+        desc: 'You and every target you designate within immediate range gains +5 Armor against one type of direct'+
+            'elemental damage (such as fire, lightning, shadow, or thorn) for one hour, or until you cast this spell'+
+            'again. Each level of Effort applied increases the elemental protection by +2.',
+        flags: {
+            type: 'Action',
+            classification: ['Defence']
+        },
+        cost: {mgt: 0, spd: 0, int: 4},
+        duration: '1hr',
+        range: 'Immediate',
+        source: 'Flavor: Protection (T4)'
+    },
+    'Gargantuan': {
+        name: 'Elemental Protection',
+        desc: 'When you use Enlarge, you can choose to grow up to 30 feet (9 m) in height, and you add 3 more temporary'+
+            'points to your Might Pool (if you also have the Bigger ability, the temporary points from Gargantuan are in'+
+            'addition to the points from Bigger)',
+        flags: {
+            type: 'Enabler',
+            classification: ['Grow']
+        },
+        cost: {mgt: 0, spd: 0, int: 4},
+        duration: 'Inf',
+        range: 'NA',
+        source: 'Focus: Grows to Towering Heights'
     }
 }
 const equs = {
