@@ -372,7 +372,7 @@ const abilities = {
         source: 'Flavor: Protection (T4)'
     },
     'Gargantuan': {
-        name: 'Elemental Protection',
+        name: 'Gargantuan',
         desc: 'When you use Enlarge, you can choose to grow up to 30 feet (9 m) in height, and you add 3 more temporary'+
             'points to your Might Pool (if you also have the Bigger ability, the temporary points from Gargantuan are in'+
             'addition to the points from Bigger)',
@@ -380,7 +380,7 @@ const abilities = {
             type: 'Enabler',
             classification: ['Grow']
         },
-        cost: {mgt: 0, spd: 0, int: 4},
+        cost: {mgt: 0, spd: 0, int: 0},
         duration: 'Inf',
         range: 'NA',
         source: 'Focus: Grows to Towering Heights'
