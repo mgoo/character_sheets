@@ -384,6 +384,20 @@ const abilities = {
         duration: 'Inf',
         range: 'NA',
         source: 'Focus: Grows to Towering Heights'
+    },
+    'Dust to Dust': {
+        name: 'Dust to Dust',
+        desc: 'You disintegrate one object that is smaller than you and whose level is less than or equal to your tier. '+
+            'You must touch the object to affect it. If the GM feels it appropriate to the circumstances, '+
+            'you can disintegrate a portion of an object (the total volume of which is smaller than you) rather than the entire thing. Action.',
+        flags: {
+            type: 'Action',
+            classification: ['Attack']
+        },
+        cost: {mgt: 0, spd: 0, int: 7},
+        duration: 'NA',
+        range: 'Touch',
+        source: 'Type: Adept (T5)'
     }
 }
 const equs = {
