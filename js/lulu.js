@@ -398,6 +398,37 @@ const abilities = {
         duration: 'NA',
         range: 'Touch',
         source: 'Type: Adept (T5)'
+    },
+    'Colossal': {
+        name: 'Colossal',
+        desc: 'When you use Enlarge, you can choose to grow up to a base height of 60 feet (18 m). When you do, you add '+
+            '5 more temporary points to your Might Pool (plus any from Gargantuan and Bigger), and you deal an additional '+
+            '2 points of damage with melee attacks (plus any from your Huge ability). For each level of Effort you apply '+
+            'to increase your height further, your total height increases by 10 feet (3 m), and you add 1 more point to your '+
+            'Might Pool. Thus, the first time you use Enlarge after a ten-hour recovery roll, if you apply two levels of '+
+            'Effort, your base height is 80 feet (24 m), and you add a total of 17 temporary points to your Might Pool. . (120)',
+        flags: {
+            type: 'Enabler',
+            classification: ['Grow']
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'Inf',
+        range: 'NA',
+        source: 'Focus: Grows to Towering Heights'
+    },
+    'Reactive Field': {
+        name: 'Reactive Field',
+        desc: 'Thanks to a remarkable enhancement of science, magic, psionics, or something even stranger, you now have a '+
+            'force field that radiates 1 inch (2.5 cm) from your body and provides you with +2 to Armor. In addition, '+
+            'if struck by a melee attack, the field creates a backlash that inflicts 4 points of electricity damage to the attacker.',
+        flags: {
+            type: 'Enabler',
+            classification: ['Defence']
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'Na',
+        source: 'Flavor: Protection (T6)'
     }
 }
 const equs = {
