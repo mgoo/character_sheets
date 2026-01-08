@@ -1,0 +1,293 @@
+<!doctype html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        button.nav-link {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .card-body {
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <h1 class="navbar-brand" style="width: 100vw;overflow: scroll;scrollbar-width: none;">
+        Cube - Jack, Radiates Vitality, Nurtiring
+    </h1>
+</nav>
+<div class="container" style="padding: 0">
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <button class="nav-link active" id="abilities-tab" data-bs-toggle="tab" data-bs-target="#abilities-panel" type="button" role="tab" aria-controls="abilities-panel" aria-selected="true">Abil</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" id="base-stat-tab"  data-bs-toggle="tab" data-bs-target="#base" type="button" role="tab" aria-controls="base" aria-selected="false">Base</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" id="equ-tab" data-bs-toggle="tab" data-bs-target="#equ" type="button" role="tab" aria-controls="equ" aria-selected="false">Eq</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="swipe-root">
+
+        <div class="tab-pane fade show active" id="abilities-panel" role="tabpanel" aria-labelledby="abilities-tab">
+            <div class="d-flex justify-content-between">
+                <div class="float-left">
+                    <span class="badge bg-secondary filter" filter="Attack">Attack</span>
+                    <span class="badge bg-secondary filter" filter="Defence">Defence</span>
+                    <span class="badge bg-secondary filter" filter="Grow">Grow</span>
+                    <span class="badge bg-secondary filter" filter="Movement">Movement</span>
+                </div>
+                <div class="float-right">
+                    <span class="badge bg-secondary filter" filter="Action">Action</span>
+                    <span class="badge bg-secondary filter" filter="Enabler">Enabler</span>
+                </div>
+            </div>
+
+
+            <div class="d-flex flex-wrap justify-content-center" style="width: 100%;margin-top: 20px" id="abilities-cards">
+                <!-- This gets filled in later -->
+            </div>
+        </div>
+
+        <div class="tab-pane fade" style="width: 100%" id="base" role="tabpanel" aria-labelledby="base-tab">
+            <ul class="list-group">
+                <li class="list-group-item">Might: 24 <span class="badge bg-success rounded-pill">Edge: 1</span></li>
+                <li class="list-group-item">Speed: 10  <span class="badge bg-success rounded-pill">Edge: 0</span></li>
+                <li class="list-group-item">Int: 10  <span class="badge bg-success rounded-pill">Edge: 0</span></li>
+
+                <li class="list-group-item">Effort Limit: 1</li>
+                <li class="list-group-item">Cypher Limit: 2</li>
+                <div class="list-group-item" aria-current="true">
+                    <div>Armor: 0</div>
+<!--                    <ul class="list-group" style="border: none !important;">-->
+<!--                        <li class="list-group-item"><small>Type: +Value</small></li>-->
+<!--                    </ul>-->
+                </div>
+                <div class="list-group-item" aria-current="true">
+                    <h3>Inability</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">Heavy Weapons</li>
+                        <li class="list-group-item">Self Control</li>
+                    </ul>
+                    <h3>Trained</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">Flex Skill (choose at day)</li>
+                        <li class="list-group-item">lockpicking, the numenera, and any task that involves sabotaging an object.</li>
+                        <li class="list-group-item">Healing Tasks</li>
+
+                    </ul>
+                    <h3>Specialised</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">Heavy Weapons</li>
+
+                    </ul>
+                </div>
+
+            </ul>
+        </div>
+
+        <div class="tab-pane fade" style="width: 100%" id="equ" role="tabpanel" aria-labelledby="equ-tab">
+            <div class="d-flex flex-wrap justify-content-center" style="width: 100%;margin-top: 20px" id="equ-cards">
+                <!-- This gets filled in later -->
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="abilityPanel" aria-labelledby="abilityPanelLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="abilityPanelLabel"></h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" id="abilityPanelBody">
+
+        </div>
+    </div>
+
+</div>
+
+
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" integrity="sha256-sw0iNNXmOJbQhYFuC9OF2kOlD5KQKe1y5lfBn4C9Sjg=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js" crossorigin="anonymous"></script>
+<script src="js/cube.js?version=1"></script>
+
+<script>
+    function equ_template(name, equ) {
+        let badge = equ['depleted'] === true ? '<span class="badge bg-danger">Dep</span>' : '';
+        return `<div class="card equ" style="width: 18rem;" equ="${name}" data-bs-toggle="offcanvas" href="#abilityPanel" role="button" aria-controls="abilityPanel">
+              <div class="card-body">
+                  <h5 class="card-title" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis">${equ['name']} ${badge}</h5>
+                  <div class="card-text">
+                      <div><span>Lv: </span>${equ['lv']}</div>
+                      <div><span>Depletion: </span>${equ['depletion']}</div>
+                  </p>
+              </div>
+          </div>`
+    }
+    function generate_equ_cards(container) {
+        container.html('')
+        for (const [name, equ] of Object.entries(equs)) {
+            let card = $(equ_template(name, equ))
+            container.append(card);
+            card.on('click', function () {
+                open_equ(card.attr('equ'));
+            });
+        }
+    }
+    function open_equ(name) {
+        let equ = equs[name];
+        $('#abilityPanelLabel').html(equ['name'])
+        $('#abilityPanelBody').html(`
+              <div>${equ['effect']}</div>
+              <hr>
+              <div><span>Lv: </span>${equ['lv']}</div>
+              <div><span>Depletion: </span>${equ['depletion']}</div>
+              <div><span>Depleted: </span>${equ['depleted']}</div>
+          `)
+    }
+
+    function card_template(name, ability) {
+        let cost = '';
+        if (Array.isArray(ability['cost'])) {
+            cost = ability['cost'].map(cost => cost_str(cost)).reduce((acc, val) => `${acc} or ${val}`)
+        } else {
+            cost = cost_str(ability['cost'])
+        }
+        return `<div class="card ability" style="width: 18rem;" ability="${name}" data-bs-toggle="offcanvas" href="#abilityPanel" role="button" aria-controls="abilityPanel">
+              <div class="card-body">
+                  <h5 class="card-title" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis">${ability['name']}</h5>
+                  <div class="card-text">
+                      <div><span>Cost: </span>${cost}</div>
+                      <div><span>Range: </span>${ability['range']}</div>
+                      <div><span>Duration: </span>${ability['duration']}</div>
+                  </p>
+              </div>
+          </div>`
+    }
+    function cost_str(cost) {
+        let cost_str = '';
+        if (cost['mgt'] > 0) {
+            cost_str = cost_str.concat(`${cost['mgt']} Might `)
+        }
+        if (cost['spd'] > 0) {
+            cost_str = cost_str.concat(`${cost['spd']} Spd `)
+        }
+        if (cost['int'] > 0) {
+            cost_str = cost_str.concat(`${cost['int']} Int `)
+        }
+        return cost_str
+    }
+    function open_ability(name) {
+        let ability = abilities[name];
+        let cost = '';
+        if (Array.isArray(ability['cost'])) {
+            cost = ability['cost'].map(cost => cost_str(cost)).reduce((acc, val) => `${acc} or ${val}`)
+        } else {
+            cost = cost_str(ability['cost'])
+        }
+        $('#abilityPanelLabel').html(ability['name'])
+        $('#abilityPanelBody').html(`
+              <div>${ability['desc']}</div>
+              <hr>
+              <div><span>Cost: </span>${cost}</div>
+              <div><span>Range: </span>${ability['range']}</div>
+              <div><span>Duration: </span>${ability['duration']}</div>
+              <div><span>Type: </span>${ability['flags']['type']}</div>
+              <div><span>Source: </span>${ability['source']}</div>
+          `)
+    }
+
+    function generate_cards(container, filter) {
+        container.html('')
+        for (const [name, ability] of Object.entries(abilities)) {
+            if (filter(ability)) {
+                let card = $(card_template(name, ability))
+                container.append(card);
+                card.on('click', function () {
+                    open_ability(card.attr('ability'));
+                });
+            }
+        }
+    }
+
+    function generate_filter() {
+        let class_elem = $('.filter.bg-success');
+        let type_elem = $('.filter.bg-primary');
+
+        let class_filter = ((class_elem.length) ? class_elem.attr('filter') : '')
+        let type_filter = ((type_elem.length) ? type_elem.attr('filter') : '')
+
+        return function(ability) {
+            return (class_filter === "" || ability['flags']['classification'].includes(class_filter)) &&
+                (type_filter === "" || ability['flags']['type'] === type_filter)
+        }
+    }
+
+    $(document).ready(function () {
+        generate_cards($('#abilities-cards'), (ability) => true);
+        generate_cards($('#vamp-cards'), (ability) => (ability['source'] === 'Vampire'))
+        generate_equ_cards($('#equ-cards'))
+
+        $('.filter').each(function() {
+            $(this).on('click', function(event) {
+                if ($(this).hasClass('bg-primary')) {
+                    $(this).removeClass('bg-primary');
+                    $(this).addClass('bg-secondary');
+                    generate_cards($('#abilities-cards'), generate_filter());
+                    event.stopImmediatePropagation();
+                    return false;
+                }
+                if ($(this).hasClass('bg-success')) {
+                    $(this).removeClass('bg-success');
+                    $(this).addClass('bg-secondary');
+                    generate_cards($('#abilities-cards'), generate_filter());
+                    event.stopImmediatePropagation();
+                    return false;
+                }
+                if ($(this).hasClass('bg-secondary')) {
+                    $(this).removeClass('bg-secondary');
+                }
+                if ($(this).parent().hasClass('float-left')) {
+                    let old_filter = $('.filter.bg-success');
+                    old_filter.removeClass('bg-success');
+                    old_filter.addClass('bg-secondary');
+
+                    if (!$(this).hasClass('bg-success')) {
+                        $(this).addClass('bg-success');
+                        generate_cards($('#abilities-cards'), generate_filter());
+                    }
+                }
+                if ($(this).parent().hasClass('float-right')) {
+                    let old_filter = $('.filter.bg-primary');
+                    old_filter.removeClass('bg-primary');
+                    old_filter.addClass('bg-secondary');
+
+                    if (!$(this).hasClass('bg-primary')) {
+                        $(this).addClass('bg-primary');
+                        generate_cards($('#abilities-cards'),  generate_filter());
+                    }
+                }
+            });
+        });
+
+
+
+        $("#swipe-root").swipe( {
+            swipeLeft:function(event, direction, distance, duration, fingerCount) {
+                $(".nav-tabs li:has(.active)").next('li').find('button').tab('show');
+            },
+            swipeRight:function(event, direction, distance, duration, fingerCount) {
+                $(".nav-tabs li:has(.active)").prev('li').find('button').tab('show');
+            },
+        });
+
+    });
+</script>
+</body>
