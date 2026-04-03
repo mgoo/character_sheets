@@ -29,7 +29,7 @@ const abilities = {
         name: 'Sabotage',
         desc: 'You are particularly good at ' +
             'bypassing locks and dismantling devices. You ' +
-            'are trained in lockpicking, the numenera, and ' +
+            'are trained in lockpicking, salvaging numenera, and ' +
             'any task that involves sabotaging an object.',
         flags: {
             type: 'Enabler',
