@@ -110,6 +110,81 @@ const abilities = {
         range: 'Touch',
         source: 'Mutation: Corrosive Touch'
     },
+    'Mending Cantrip': {
+        name: 'Mending Cantrip',
+        desc: 'You ' +
+            'touch a broken object of up to level 3 and ' +
+            'attempt to magically repair a single break ' +
+            'or tear in it, such as a cracked stone wall, ' +
+            'a shattered hand mirror, or a torn piece of ' +
+            'clothing. The damage can be no larger than ' +
+            'about what you can cover with both of ' +
+            'your open hands. If you succeed at an ' +
+            'Intellect-based roll against the object’s level, ' +
+            'you repair it (although it still shows signs of ' +
+            'being previously broken, and may be fragile ' +
+            'there). You can use this ability multiple ' +
+            'times on the same object to repair larger ' +
+            'breaks.',
+        flags: {
+            type: 'Action',
+            classification: ['Other']
+        },
+        cost: {mgt: 0, spd: 0, int: 1},
+        duration: 'NA',
+        range: 'Touch',
+        source: 'Long play'
+    },
+    'Color Cantrip': {
+        name: 'Color Cantrip',
+        desc: 'You ' +
+            'change the color of an object, or you ' +
+            'brighten or dull its color. The object can ' +
+            'be up to about 1 cubic foot in size and up ' +
+            'to a short distance away. If used to change ' +
+            'a creature’s hair color, it lasts a few days.',
+        flags: {
+            type: 'Action',
+            classification: ['Other']
+        },
+        cost: {mgt: 0, spd: 0, int: 1},
+        duration: 'NA',
+        range: 'Short Distance',
+        source: 'Long Play'
+    },
+    'Hedge Magic': {
+        name: 'Hedge Magic',
+        desc: 'You can ' +
+            'perform small tricks: temporarily change ' +
+            'the color or basic appearance of a small ' +
+            'object, cause small objects to float through ' +
+            'the air, clean a small area, mend a broken ' +
+            'object, prepare (but not create) food, and ' +
+            'so on. You can’t use Hedge Magic to harm ' +
+            'another creature or object.',
+        flags: {
+            type: 'Action',
+            classification: ['Other']
+        },
+        cost: {mgt: 0, spd: 0, int: 1},
+        duration: 'NA',
+        range: 'NA',
+        source: 'Type: Jack T2'
+    },
+    'Restful Presence': {
+        name: 'Restful Presence',
+        desc: 'Creatures who make a ' +
+            'recovery roll within short range of you add ' +
+            '+1 to their roll.',
+        flags: {
+            type: 'Enabler',
+            classification: ['Healing']
+        },
+        cost: {mgt: 0, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'Short Distance',
+        source: 'Type: Jack T2P'
+    },
 
 
 }
@@ -161,7 +236,48 @@ const equs = {
             'targets within long range, the targets within long ' +
             'range get attacked twice (or more times) each, ' +
             'starting with those in immediate range. Deals Lv Dmg',
+        depletion: 'Cypher - In Cypher Cube',
+        depleted: false
+    },
+    'Contingent Subroutine': {
+        name: 'Contingent Subroutine',
+        lv: '5',
+        effect: 'The device automatically activates if the ' +
+            'user becomes debilitated or dies. The device ' +
+            'downloads special instructions from the ' +
+            'datasphere that cause the body to take steps ' +
+            'to protect and repair itself. During the next ' +
+            'minute, the user is under the GM’s control ' +
+            'and on each of the user’s turns, even if he is ' +
+            'dead, he takes an action to move away from ' +
+            'danger by the safest available route. At the end ' +
+            'of this time, he makes a recovery roll—again, ' +
+            'even if he is dead. The recovery roll does not ' +
+            'count against the limit on recovery rolls that ' +
+            'he can make in a day.',
         depletion: 'Cypher',
+        depleted: false
+    },
+    'Water Breather': {
+        name: 'Water Breather',
+        lv: '2',
+        effect: 'Allows an air breather to extract oxygen from water for eight hours so she can breath underwater',
+        depletion: 'Cypher - In Cypher Cube',
+        depleted: false
+    },
+    'Poison Sadness': {
+        name: 'Poison (Sadness)',
+        lv: '7',
+        effect: 'Difficulty of all victims tasks is increased by 1 set for an hour',
+        depletion: 'Cypher - In Cypher Cube',
+        depleted: false
+    },
+    'Cypher Cube': {
+        name: 'Cypher Cube',
+        lv: '3',
+        effect: 'Stores Cyphers equal to level in transdimensional space. Cyphers do not count to cypher limit' +
+            'on depletion you get a random cypher instead',
+        depletion: '1d6 for random cypher',
         depleted: false
     },
     'Explorers Pack': {
