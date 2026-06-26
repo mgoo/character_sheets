@@ -185,6 +185,41 @@ const abilities = {
         range: 'Short Distance',
         source: 'Type: Jack T2P'
     },
+    'Detect Life': {
+        name: 'Detect Life',
+        desc: 'You ' +
+            'consciously send out a pulse of your ' +
+            'biomorphic field. You detect all living creatures ' +
+            'within short range, even if they are behind ' +
+            'cover, though not if they’re behind a force ' +
+            'field. When you detect a creature, you detect ' +
+            'its general location (to within an immediate ' +
+            'range). If you apply two additional levels of ' +
+            'Effort, you can increase the range of detection ' +
+            'to long.',
+        flags: {
+            type: 'Action',
+            classification: ['']
+        },
+        cost: {mgt: 3, spd: 0, int: 0},
+        duration: 'NA',
+        range: 'Short Distance',
+        source: 'Foci: Radiates Vitality (T3) Destiny'
+    },
+    'Encouraging Presence': {
+        name: 'Encouraging Presence',
+        desc: ' (2 Intellect points):\n' +
+            'For one minute, allies within short range\n' +
+            'gain an asset on defense rolls.',
+        flags: {
+            type: 'Action',
+            classification: ['Defence']
+        },
+        cost: {mgt: 0, spd: 0, int: 2},
+        duration: '1 min',
+        range: 'Short Distance',
+        source: 'Type: Jack T3 (T2 ability)'
+    },
 
 
 }
