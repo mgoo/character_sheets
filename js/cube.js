@@ -208,8 +208,7 @@ const abilities = {
     },
     'Encouraging Presence': {
         name: 'Encouraging Presence',
-        desc: ' (2 Intellect points):\n' +
-            'For one minute, allies within short range\n' +
+        desc: 'For one minute, allies within short range ' +
             'gain an asset on defense rolls.',
         flags: {
             type: 'Action',
