@@ -219,7 +219,23 @@ const abilities = {
         range: 'Short Distance',
         source: 'Type: Jack T3 (T2 ability)'
     },
-
+    'Speed Recovery': {
+        name: 'Speed Recovery',
+        desc: 'You'+
+        'adjust a creature’s normal regenerative ability'+
+        'so that he recovers more quickly. One creature'+
+        'you choose within short range makes a'+
+        'recovery roll without having to spend the time'+
+        'to do so.',
+        flags: {
+            type: 'Action',
+            classification: ['Healing']
+        },
+        cost: {mgt: 0, spd: 0, int: 3},
+        duration: '1 min',
+        range: 'Short Distance',
+        source: 'Type: Nano T3 (T2 ability)'
+    },
 
 }
 const equs = {
