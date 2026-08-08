@@ -308,17 +308,21 @@ const equs = {
         depletion: 'Cypher',
         depleted: false
     },
-    'Water Breather': {
-        name: 'Water Breather',
-        lv: '2',
-        effect: 'Allows an air breather to extract oxygen from water for eight hours so she can breath underwater',
+    'Corrosive Swarm': {
+        name: 'Corrosive Swarm',
+        lv: '1',
+        effect: 'This cloud of tiny machines can be dispatched at any target within long range. The cloud ' +
+                'lingers for 1d6 rounds unless conditions dictate otherwise. The selected target in the ' +
+                'cloud suffers damage equal to the cypher level (the cloud will only damage the designated target).',
         depletion: 'Cypher - In Cypher Cube',
         depleted: false
     },
-    'Poison Sadness': {
-        name: 'Poison (Sadness)',
-        lv: '7',
-        effect: 'Difficulty of all victims tasks is increased by 1 set for an hour',
+    'Essence Transfer': {
+        name: 'Essence Transfer',
+        lv: '5',
+        effect: 'Allows one willing character to transfer points from their Pools to another characters Pools. ' +
+                'The transferring character cannot reduce a Pool below 1 and the receiving character can\'t ' +
+                'raise a Pool above its normal maximum',
         depletion: 'Cypher - In Cypher Cube',
         depleted: false
     },
