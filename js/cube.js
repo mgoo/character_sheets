@@ -264,6 +264,34 @@ const equs = {
         depletion: 'Cypher',
         depleted: false
     },
+    'Essence Transfer': {
+        name: 'Essence Transfer',
+        lv: '5',
+        effect: 'Allows one willing character to transfer points from their Pools to another characters Pools. ' +
+            'The transferring character cannot reduce a Pool below 1 and the receiving character can\'t ' +
+            'raise a Pool above its normal maximum',
+        depletion: 'Cypher',
+        depleted: false
+    },
+    'Contingent Subroutine': {
+        name: 'Contingent Subroutine',
+        lv: '5',
+        effect: 'The device automatically activates if the ' +
+            'user becomes debilitated or dies. The device ' +
+            'downloads special instructions from the ' +
+            'datasphere that cause the body to take steps ' +
+            'to protect and repair itself. During the next ' +
+            'minute, the user is under the GM’s control ' +
+            'and on each of the user’s turns, even if he is ' +
+            'dead, he takes an action to move away from ' +
+            'danger by the safest available route. At the end ' +
+            'of this time, he makes a recovery roll—again, ' +
+            'even if he is dead. The recovery roll does not ' +
+            'count against the limit on recovery rolls that ' +
+            'he can make in a day.',
+        depletion: 'Cypher',
+        depleted: false
+    },
     'Caustic Shower2': {
         name: 'Caustic Shower',
         lv: '9',
@@ -289,25 +317,6 @@ const equs = {
         depletion: 'Cypher - In Cypher Cube',
         depleted: false
     },
-    'Contingent Subroutine': {
-        name: 'Contingent Subroutine',
-        lv: '5',
-        effect: 'The device automatically activates if the ' +
-            'user becomes debilitated or dies. The device ' +
-            'downloads special instructions from the ' +
-            'datasphere that cause the body to take steps ' +
-            'to protect and repair itself. During the next ' +
-            'minute, the user is under the GM’s control ' +
-            'and on each of the user’s turns, even if he is ' +
-            'dead, he takes an action to move away from ' +
-            'danger by the safest available route. At the end ' +
-            'of this time, he makes a recovery roll—again, ' +
-            'even if he is dead. The recovery roll does not ' +
-            'count against the limit on recovery rolls that ' +
-            'he can make in a day.',
-        depletion: 'Cypher',
-        depleted: false
-    },
     'Corrosive Swarm': {
         name: 'Corrosive Swarm',
         lv: '1',
@@ -317,15 +326,15 @@ const equs = {
         depletion: 'Cypher - In Cypher Cube',
         depleted: false
     },
-    'Essence Transfer': {
-        name: 'Essence Transfer',
+    'Chemical Factory': {
+        name: 'Chemical Factory',
         lv: '5',
-        effect: 'Allows one willing character to transfer points from their Pools to another characters Pools. ' +
-                'The transferring character cannot reduce a Pool below 1 and the receiving character can\'t ' +
-                'raise a Pool above its normal maximum',
+        effect: 'After 1 hr, the sweat of the user produces 1d6 doses of valuble liquid. That can be used as euphoric, '+
+                'hallucinogenic, stimulant, depressant or nutrient supply. They must be used within 1 week.',
         depletion: 'Cypher - In Cypher Cube',
         depleted: false
     },
+
     'Cypher Cube': {
         name: 'Cypher Cube',
         lv: '3',
